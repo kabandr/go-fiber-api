@@ -10,17 +10,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/kabandr/go-fiber-api/config"
 	"github.com/kabandr/go-fiber-api/models"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongodriver/bson"
 )
 
 // Get users
 func GetAllCatchphrases(c *fiber.Ctx) error {
-	catchphraseCollection, err := config.MI.DB.Collection("catchphrases")
+	catchphraseCollection := config.MI.DB.Collection("catchphrases")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	var catchphrases []models.CatchPhrase
+	var catchphrases []models.Catchphrase
 
 	filter := bson.M{}
 	findOptions := options.Find()

@@ -20,7 +20,7 @@ type MongoInstance struct {
 
 var MI MongoInstance
 
-func connectDB() {
+func ConnectDB() {
 	if os.Getenv("APP_ENV") != "production" {
 		err := godotenv.Load()
 
